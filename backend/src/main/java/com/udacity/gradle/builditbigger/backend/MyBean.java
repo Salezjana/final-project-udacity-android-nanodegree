@@ -1,15 +1,17 @@
 package com.udacity.gradle.builditbigger.backend;
 
+import pl.mrodkiewicz.jokegenerator.JokeMain;
+
 /** The object model for the data we are sending through endpoints */
 public class MyBean {
 
-    private String myData;
+    private JokeMain jokeMain;
 
-    public String getData() {
-        return myData;
+    public MyBean() {
+        jokeMain = new JokeMain();
     }
 
-    public void setData(String data) {
-        myData = data;
+    public String getJoke(){
+        return jokeMain.getRandomJoke();
     }
 }
