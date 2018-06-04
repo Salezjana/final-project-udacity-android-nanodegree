@@ -12,14 +12,14 @@ public class JokeMain {
     }
 
     private void generateJokes() {
-        jokes[0] = "Grate Joke nr 1";
-        jokes[1] = "Grate Joke nr 2";
-        jokes[2] = "Grate Joke nr 3";
-        jokes[3] = "Grate Joke nr 4";
-        jokes[4] = "Grate Joke nr 5";
-        jokes[5] = "Grate Joke nr 6";
-        jokes[6] = "Grate Joke nr 7";
-        jokes[7] = "Grate Joke nr 8";
+        jokes[0] = "Joke nr 1";
+        jokes[1] = "Joke nr 2";
+        jokes[2] = "Joke nr 3";
+        jokes[3] = "Joke nr 4";
+        jokes[4] = "Joke nr 5";
+        jokes[5] = "Joke nr 6";
+        jokes[6] = "Joke nr 7";
+        jokes[7] = "Joke nr 8";
     }
 
     public String getRandomJoke() {
