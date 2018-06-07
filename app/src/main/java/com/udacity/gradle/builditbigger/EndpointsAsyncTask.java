@@ -1,6 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
@@ -10,17 +12,18 @@ import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
 
-public class EndpointsAsyncTask extends AsyncTask<EndpointsAsyncTask.JokeCallback, Void, String> {
-    private MyApi myApi = null;
-    String joke ="";
-    private boolean errorOccurred = false;
+import timber.log.Timber;
+
+public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
+    private static MyApi myApiService = null;
+    private Context context;
 
     @Override
-    protected String doInBackground(JokeCallback... params) {
-        if (myApi == null) {
+    protected String doInBackground(Context... params) {
+        if(myApiService == null) {
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
-                    .setRootUrl("192.168.1.20:8080")
+                    .setRootUrl("http://10.0.2.2:8080/_ah/api/")
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
                         public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
@@ -28,25 +31,26 @@ public class EndpointsAsyncTask extends AsyncTask<EndpointsAsyncTask.JokeCallbac
                         }
                     });
 
-            myApi = builder.build();
+
+            myApiService = builder.build();
         }
 
+        this.context = params[0];
 
         try {
-            joke = myApi.getJoke().execute().getJoke();
+            return myApiService.getJoke().execute().getData();
         } catch (IOException e) {
-            joke= "error";
+
             return e.getMessage();
         }
-        return joke;
     }
 
     @Override
     protected void onPostExecute(String result) {
-        result = joke;
+        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        Timber.d(result);
     }
 
-    public interface JokeCallback {
-        void done(String result, boolean error);
-    }
+
+
 }

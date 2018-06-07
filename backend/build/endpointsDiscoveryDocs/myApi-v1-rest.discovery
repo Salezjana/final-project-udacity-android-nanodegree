@@ -86,7 +86,7 @@
   "MyBean": {
    "id": "MyBean",
    "properties": {
-    "joke": {
+    "data": {
      "type": "string"
     }
    },
