@@ -3,7 +3,10 @@
     package="com.example.myjokeandroidlib">
 
     <application>
-
+        <activity
+            android:name=".MainJokeActivity"
+            android:label="@string/title_activity_main_joke"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

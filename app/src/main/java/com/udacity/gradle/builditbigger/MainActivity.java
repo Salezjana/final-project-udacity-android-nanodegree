@@ -1,13 +1,14 @@
 package com.udacity.gradle.builditbigger;
 
 
-import android.arch.core.BuildConfig;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.FrameLayout;
 
-import com.example.myjokeandroidlib.JokeFragment;
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
@@ -37,18 +38,15 @@ public class MainActivity extends AppCompatActivity {
             MobileAds.initialize(this,
                     "ca-app-pub-3940256099942544~3347511713");
 
-
             adView = findViewById(R.id.adView);
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);
         }
 
-        new EndpointsAsyncTask().execute(this);
-        JokeMain jokeMain = new JokeMain();
-        Timber.d(jokeMain.getJoke());
     }
 
 
-
-
+    public void jokeclick(View view) {
+        new EndpointsAsyncTask().execute(this);
+    }
 }
