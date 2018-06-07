@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class EndpointsAsyncTask extends AsyncTask<EndpointsAsyncTask.JokeCallback, Void, String> {
     private MyApi myApi = null;
-    private JokeCallback callback;
+    String joke ="";
     private boolean errorOccurred = false;
 
     @Override
@@ -20,7 +20,7 @@ public class EndpointsAsyncTask extends AsyncTask<EndpointsAsyncTask.JokeCallbac
         if (myApi == null) {
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
-                    .setRootUrl("192.168.1.12")
+                    .setRootUrl("192.168.1.20:8080")
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
                         public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
@@ -31,21 +31,19 @@ public class EndpointsAsyncTask extends AsyncTask<EndpointsAsyncTask.JokeCallbac
             myApi = builder.build();
         }
 
-        callback = params[0];
 
         try {
-            return myApi.getJoke().execute().getJoke();
+            joke = myApi.getJoke().execute().getJoke();
         } catch (IOException e) {
-            errorOccurred = true;
+            joke= "error";
             return e.getMessage();
         }
+        return joke;
     }
 
     @Override
     protected void onPostExecute(String result) {
-        if (callback != null) {
-            callback.done(result, errorOccurred);
-        }
+        result = joke;
     }
 
     public interface JokeCallback {

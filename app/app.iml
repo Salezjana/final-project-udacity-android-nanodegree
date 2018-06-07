@@ -168,6 +168,7 @@
     <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpcore:4.0.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:common:1.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-annotations:27.1.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.jakewharton.timber:timber-4.7.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-gass-license-11.8.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:animated-vector-drawable-27.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-ads-license-11.8.0" level="project" />
@@ -199,6 +200,10 @@
     <orderEntry type="library" name="Gradle: android.arch.core:common:1.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava-jdk5:17.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime-1.1.0" level="project" />
+    <orderEntry type="module" module-name="myjokeandroidlib" />
+    <orderEntry type="module" module-name="JokeGenerator" />
+    <orderEntry type="module" module-name="myjokeandroidlib" />
+    <orderEntry type="module" module-name="JokeGenerator" />
     <orderEntry type="module" module-name="myjokeandroidlib" />
     <orderEntry type="module" module-name="JokeGenerator" />
   </component>
